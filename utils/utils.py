@@ -6,8 +6,7 @@ import os
 import matplotlib.pyplot as plt
 
 
-from models.definitions.vgg_nets import Vgg16, Vgg19, Vgg16Experimental
-
+from models.definitions.vgg_nets import Vgg19
 
 IMAGENET_MEAN_255 = [123.675, 116.28, 103.53]
 IMAGENET_STD_NEUTRAL = [1, 1, 1]
@@ -56,7 +55,7 @@ def prepare_img(img_path, target_shape, device):
 def save_image(img, img_path):
     if len(img.shape) == 2:
         img = np.stack((img,) * 3, axis=-1)
-    cv.imwrite(img_path, img[:, :, ::-1])  # [:, :, ::-1] converts rgb into bgr (opencv contraint...)
+    cv.imwrite(img_path, img[:, :, ::-1])
 
 
 def generate_out_img_name(config):
@@ -97,19 +96,9 @@ def get_uint8_range(x):
     else:
         raise ValueError(f'Expected numpy array got {type(x)}')
 
-
-#
-# End of image manipulation util functions
-#
-
-
-# initially it takes some time for PyTorch to download the models into local cache
 def prepare_model(model, device):
 
-
-
     model = Vgg19(requires_grad=False, show_progress=True)
-
     content_feature_maps_index = model.content_feature_maps_index
     style_feature_maps_indices = model.style_feature_maps_indices
     layer_names = model.layer_names

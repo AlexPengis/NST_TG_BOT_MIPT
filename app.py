@@ -4,13 +4,12 @@ from aiogram import Bot, Dispatcher, types
 from aiogram.filters import  CommandStart
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
+from aiogram import F
 from aiogram.types import (
     KeyboardButton,
     ReplyKeyboardMarkup,
     ReplyKeyboardRemove,
 )
-from aiogram import F
-
 
 
 import neural_style_transfer as nst
@@ -39,7 +38,6 @@ async def cmd_start(message: types.Message,  state: FSMContext):
 @dp.message(ClientState.SEND_STYLE_IMG)
 async def handle_style_images(message: types.Message, state: FSMContext ):
     # Check if the message contains a photo
-
     if message.photo:
         # Get the file_id of the largest photo (highest resolution)
         file_id = message.photo[-1].file_id
@@ -109,9 +107,6 @@ async def cancel_handler(message: types.Message, state: FSMContext) -> None:
         reply_markup=ReplyKeyboardRemove(),
     )
 
-
-
-
 @dp.message(ClientState.PROCESS_IMAGE, F.text.casefold() == "сгенерировать")
 async def run_generation(message: types.Message, state: FSMContext) -> None:
     await state.set_state(ClientState.RUN_GEN)
@@ -131,27 +126,6 @@ async def run_generation(message: types.Message, state: FSMContext) -> None:
     print(out_img_path)
     await message.reply_photo( photo = types.FSInputFile(path= out_img_path))
     await message.answer("Сгенерировать еще /start")
-'''
-@dp.message(ClientState.PROCESS_IMAGE)
-async def show_summary(message: types.Message, state: FSMContext) -> None:
-    await message.answer(
-        f"Nice to meet you, Did you like to write bots?",
-        reply_markup=ReplyKeyboardMarkup(
-            keyboard=[
-                [
-                    KeyboardButton(text="Запускаем Генерацию"),
-                    KeyboardButton(text="Начать заново"),
-                ]
-            ],
-            resize_keyboard=True,
-        ),
-    )
-    
- '''
-
-
-
-
 
 if __name__ == "__main__":
     asyncio.run(main())
