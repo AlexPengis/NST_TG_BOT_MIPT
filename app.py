@@ -1,5 +1,6 @@
 import asyncio
 import logging
+import os
 from aiogram import Bot, Dispatcher, types
 from aiogram.filters import  CommandStart
 from aiogram.fsm.context import FSMContext
@@ -21,7 +22,8 @@ class ClientState(StatesGroup):
     RUN_GEN = State()
 
 
-BOT_TOKEN = "6732463470:AAFTMbpMoS6ZJYnsz8EK2nTFbJkKfuW-wsA"
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+print(BOT_TOKEN)
 bot = Bot(token=BOT_TOKEN)
 dp = Dispatcher()
 
@@ -116,9 +118,7 @@ async def run_generation(message: types.Message, state: FSMContext) -> None:
         "Запускаю генерацию",
         reply_markup=ReplyKeyboardRemove(),
     )
-    #loop = asyncio.get_running_loop()
-    #with ProcessPoolExecutor() as pool:
-    #    await loop.run_in_executor(pool, nst.neural_style_transfer, optimization_config)
+
     optimization_config = nst.set_img_names(data['style_img_name'], data['source_img_name'] )
     print(optimization_config)
     nst.neural_style_transfer(optimization_config)

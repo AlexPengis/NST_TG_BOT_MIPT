@@ -1,12 +1,7 @@
-## Neural Style Transfer (optimization method) :computer: + :art: = :heart:
+## Telegram bot with Neural Style Transfer (optimization method) :computer: + :art: = :heart:
 This repo contains a concise PyTorch implementation of the original NST paper (:link: [Gatys et al.](https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Gatys_Image_Style_Transfer_CVPR_2016_paper.pdf)).
 
-It's an accompanying repository for [this video series on YouTube](https://www.youtube.com/watch?v=S78LQebx6jo&list=PLBoQnSflObcmbfshq9oNs41vODgXG-608).
 
-<p align="left">
-<a href="https://www.youtube.com/watch?v=S78LQebx6jo" target="_blank"><img src="https://img.youtube.com/vi/S78LQebx6jo/0.jpg" 
-alt="NST Intro" width="480" height="360" border="10" /></a>
-</p>
 
 ### What is NST algorithm?
 The algorithm transfers style from one input image (the style image) onto another input image (the content image) using CNN nets (usually VGG-16/19) and gives a composite, stylized image out which keeps the content from the content image but takes the style from the style image.
@@ -35,21 +30,7 @@ Transfering style gives beautiful artistic results:
 <img src="data/examples/lion/lion_vg_la_cafe_o_lbfgs_i_content_h_500_m_vgg19_cw_100000.0_sw_30000.0_tv_1.0_resized.jpg" width="270px">
 </p>
 
-And here are some results coupled with their style:
 
-<p align="center">
-<img src="data/examples/figures/figures_ben_giles_o_lbfgs_i_content_h_500_m_vgg19_cw_100000.0_sw_30000.0_tv_1.0_resized.jpg" width="400px">
-<img src="data/style-images/ben_giles.jpg" width="267px">
-
-<img src="data/examples/figures/figures_wave_crop_o_lbfgs_i_content_h_500_m_vgg19_cw_100000.0_sw_30000.0_tv_1.0_resized.jpg" width="400px">
-<img src="data/style-images/wave_crop.jpg" width="267px">
-
-<img src="data/examples/figures/figures_vg_wheat_field_w_350_m_vgg19_cw_100000.0_sw_300000.0_tv_1.0_resized.jpg" width="400px">
-<img src="data/style-images/vg_wheat_field_cropped.jpg" width="267px">
-
-<img src="data/examples/figures/figures_vg_starry_night_w_350_m_vgg19_cw_100000.0_sw_30000.0_tv_1.0_resized.jpg" width="400px">
-<img src="data/style-images/vg_starry_night_resized.jpg" width="267px">
-</p>
 
 *Note: all of the stylized images were produced by me (using this repo), credits for original image artists [are given bellow](#acknowledgements).*
 
