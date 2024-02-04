@@ -87,8 +87,7 @@ def set_img_names(style_img_name, source_img_name):
     optimization_config['content_weight'] = 1e5
     optimization_config['height'] = 400
     optimization_config['style_weight'] = 1e5
-    optimization_config['tv_weight'] = 3e4
-    optimization_config['init_method'] = 'content'
+    optimization_config['tv_weight'] = 1e-1
     optimization_config['content_images_dir'] = content_images_dir
     optimization_config['style_images_dir'] = style_images_dir
     optimization_config['output_img_dir'] = output_img_dir
