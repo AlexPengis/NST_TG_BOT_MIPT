@@ -23,7 +23,6 @@ class ClientState(StatesGroup):
 
 
 BOT_TOKEN = os.getenv("BOT_TOKEN")
-print(BOT_TOKEN)
 bot = Bot(token=BOT_TOKEN)
 dp = Dispatcher()
 
@@ -52,7 +51,7 @@ async def handle_style_images(message: types.Message, state: FSMContext ):
         downloaded_style_file = await bot.download_file(file_path)
         # Process the downloaded file as needed (e.g., save it, analyze it, etc.)
         # For example, you can save it to the local disk
-        with open(f'C:\\Users\\Alexey\\pythonProject1\\data\\style-images\\{file_id}.jpg', 'wb') as new_file:
+        with open(f'data\\style-images\\{file_id}.jpg', 'wb') as new_file:
             new_file.write(downloaded_style_file.read())
 
         # Respond to the user
@@ -68,7 +67,6 @@ async def handle_style_images(message: types.Message,  state: FSMContext):
      if message.photo:
         file_id = message.photo[-1].file_id
         # Get the file object using the file_id
-
         file = await bot.get_file(file_id)
         print(file)
         # Download the file
@@ -77,7 +75,7 @@ async def handle_style_images(message: types.Message,  state: FSMContext):
         downloaded_style_file = await bot.download_file(file_path)
         # Process the downloaded file as needed (e.g., save it, analyze it, etc.)
         # For example, you can save it to the local disk
-        with open(f'C:\\Users\\Alexey\\pythonProject1\\data\\content-images\\{file_id}.jpg', 'wb') as new_file:
+        with open(f'data\\content-images\\{file_id}.jpg', 'wb') as new_file:
             new_file.write(downloaded_style_file.read())
 
         # Respond to the user
@@ -122,7 +120,7 @@ async def run_generation(message: types.Message, state: FSMContext) -> None:
     optimization_config = nst.set_img_names(data['style_img_name'], data['source_img_name'] )
     print(optimization_config)
     nst.neural_style_transfer(optimization_config)
-    out_img_path = f'C:\\Users\\Alexey\\pythonProject1\\data\\output-images\\' +  data['source_img_name'] +'_'+ data['style_img_name']  + '.jpg'
+    out_img_path = f'data\\output-images\\' +  data['source_img_name'] +'_'+ data['style_img_name']  + '.jpg'
     print(out_img_path)
     await message.reply_photo( photo = types.FSInputFile(path= out_img_path))
     await message.answer("Сгенерировать еще /start")

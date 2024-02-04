@@ -1,26 +1,24 @@
 ## Telegram bot with Neural Style Transfer (optimization method) 
-This repo contains a code of a simple Telegram chatbot based on aiogram library, concise PyTorch implementation of the original NST paper (:link: [Gatys et al.](https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Gatys_Image_Style_Transfer_CVPR_2016_paper.pdf)). 
+This repo contains a code of a simple Telegram chatbot based on aiogram library with PyTorch implementation of the original NST (Neural Style Transfer ) paper (:link: [Gatys et al.](https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Gatys_Image_Style_Transfer_CVPR_2016_paper.pdf)). 
 based on Vgg19 CNN network as a final work fpr "Deep Learning (семестр 1, осень 2023)" course. 
 
-<p align="center">
-<img src="readme_pics/Vgg19.png" width="570"/>
-</p>
 
-### What is NST algorithm?
+
+### What is Neural Style Transfer  algorithm?
 The algorithm transfers style from one input image (the style image) onto another input image (the content image) using CNN nets (usually VGG-19) and gives a composite, stylized image out which keeps the content from the content image but takes the style from the style image.
 
 <p align="center">
-<img src="readme_pics/style_1.jpg" width="260"/>
-<img src="readme_pics/style_2.jpg" width="260"/>
+<img src="readme_pics/style_1.webp" width="260"/>
+<img src="readme_pics/style_2.webp" width="260"/>
 </p>
 
-
+Vgg19 CNN model principal sheme: 
+<p align="center">
+<img src="readme_pics/Vgg19.png" width="570"/>
+</p>
 ## Examples
 
 Transfering style gives beautiful artistic results:
-
-
-*Note: all of the stylized images were produced by me (using this repo), credits for original image artists [are given bellow](#acknowledgements).*
 
 
 ### Optimization initialization
