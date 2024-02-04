@@ -1,18 +1,19 @@
 ## Telegram bot with Neural Style Transfer (optimization method) 
-This repo contains a concise PyTorch implementation of the original NST paper (:link: [Gatys et al.](https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Gatys_Image_Style_Transfer_CVPR_2016_paper.pdf)).
-based on Vgg19 CNN network 
-### What is NST algorithm?
-The algorithm transfers style from one input image (the style image) onto another input image (the content image) using CNN nets (usually VGG-16/19) and gives a composite, stylized image out which keeps the content from the content image but takes the style from the style image.
+This repo contains a code of a simple Telegram chatbot based on aiogram library, concise PyTorch implementation of the original NST paper (:link: [Gatys et al.](https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Gatys_Image_Style_Transfer_CVPR_2016_paper.pdf)). 
+based on Vgg19 CNN network as a final work fpr "Deep Learning (семестр 1, осень 2023)" course. 
 
 <p align="center">
-<img src="readme_pics/examples/bridge/green_bridge_vg_la_cafe_o_lbfgs_i_content_h_500_m_vgg19_cw_100000.0_sw_30000.0_tv_1.0.jpg" width="570"/>
-<img src="readme_pics/examples/bridge/content_style.jpg" width="260"/>
+<img src="readme_pics/Vgg19.png" width="570"/>
 </p>
 
-### Why yet another NST repo?
-It's the **cleanest and most concise** NST repo that I know of + it's written in **PyTorch!** :heart:
+### What is NST algorithm?
+The algorithm transfers style from one input image (the style image) onto another input image (the content image) using CNN nets (usually VGG-19) and gives a composite, stylized image out which keeps the content from the content image but takes the style from the style image.
 
-Most of NST repos were written in TensorFlow (before it even had L-BFGS optimizer) and torch (obsolete framework, used Lua) and are overly complicated often times including multiple functionalities (video, static image, color transfer, etc.) in 1 repo and exposing 100 parameters over command-line (out of which maybe 5 or 6 may actually be used on a regular basis).
+<p align="center">
+<img src="readme_pics/style_1.jpg" width="260"/>
+<img src="readme_pics/style_2.jpg" width="260"/>
+</p>
+
 
 ## Examples
 
@@ -20,19 +21,6 @@ Transfering style gives beautiful artistic results:
 
 
 *Note: all of the stylized images were produced by me (using this repo), credits for original image artists [are given bellow](#acknowledgements).*
-
-### Content/Style tradeoff
-
-Changing style weight gives you less or more style on the final image, assuming you keep the content weight constant. <br/>
-I did increments of 10 here for style weight (1e1, 1e2, 1e3, 1e4), while keeping content weight at constant 1e5, and I used random image as initialization image. 
-
-
-
-### Impact of total variation (tv) loss
-
-Rarely explained, the total variation loss i.e. it's corresponding weight controls the smoothness of the image. <br/>
-I also did increments of 10 here (1e1, 1e4, 1e5, 1e6) and I used content image as initialization image.
-
 
 
 ### Optimization initialization
@@ -55,27 +43,14 @@ In steps 45, 129 and 510 of the  using layers relu1_1, relu2_1, relu3_1, relu4_1
 3. Run `activate pytorch-nst`
 
 
-## Usage
-
-1. Copy content images to the default content image directory: `/data/content-images/`
-2. Copy style images to the default style image directory: `/data/style-images/`
-3. Run `python neural_style_transfer.py --content_img_name <content-img-name> --style_img_name <style-img-name>`
-
-No more dark magic.
+## How to run 
+1. create a telegram chatbot using @botfather, generate bot token key
+2. set BOT_TOKEN as envirerment variable 
+3. run app.py 
+users input and results images will be stored in the /data/ folder 
 
 ## Acknowledgements
 
-I found these repos useful: (while developing this one)
-* [fast_neural_style](https://github.com/pytorch/examples/tree/master/fast_neural_style) (PyTorch, feed-forward method)
-* [neural-style-tf](https://github.com/cysmith/neural-style-tf/) (TensorFlow, optimization method)
-* [neural-style](https://github.com/anishathalye/neural-style/) (TensorFlow, optimization method)
-
-I found some of the content/style images I was using here:
-* [style/artistic images](https://www.rawpixel.com/board/537381/vincent-van-gogh-free-original-public-domain-paintings?sort=curated&mode=shop&page=1)
-* [awesome figures pic](https://www.pexels.com/photo/action-android-device-electronics-595804/)
-* [awesome bridge pic](https://www.pexels.com/photo/gray-bridge-and-trees-814499/)
-
-Other images are now already classics in the NST world.
 
 
 @misc{Gordić2020nst,

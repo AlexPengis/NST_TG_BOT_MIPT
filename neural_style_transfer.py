@@ -22,17 +22,12 @@ def build_loss(neural_net, optimizing_img, target_representations, content_featu
     return total_loss, content_loss, style_loss, tv_loss
 
 def make_tuning_step(neural_net, optimizer, target_representations, content_feature_maps_index, style_feature_maps_indices, config):
-    # Builds function that performs a step in the tuning loop
     def tuning_step(optimizing_img):
         total_loss, content_loss, style_loss, tv_loss = build_loss(neural_net, optimizing_img, target_representations, content_feature_maps_index, style_feature_maps_indices, config)
-        # Computes gradients
         total_loss.backward()
-        # Updates parameters and zeroes gradients
         optimizer.step()
         optimizer.zero_grad()
         return total_loss, content_loss, style_loss, tv_loss
-
-    # Returns the function that will be called inside the tuning loop
     return tuning_step
 
 
