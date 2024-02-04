@@ -3,4 +3,3 @@ __pycache__
 /data/content-images/*
 /data/output-images/*
 /data/style-images/*
-neural_style_transfer_back.py

@@ -8,8 +8,8 @@ based on Vgg19 CNN network as a final work fpr "Deep Learning (семестр 1,
 The algorithm transfers style from one input image (the style image) onto another input image (the content image) using CNN nets (usually VGG-19) and gives a composite, stylized image out which keeps the content from the content image but takes the style from the style image.
 
 <p align="center">
-<img src="readme_pics/style_1.webp" width="260"/>
-<img src="readme_pics/style_2.webp" width="260"/>
+<img src="readme_pics/style_example_1.png" width="720"/>
+<img src="readme_pics/style_example_2.png" width="720"/>
 </p>
 
 Vgg19 CNN model principal sheme: 
@@ -36,9 +36,11 @@ In steps 45, 129 and 510 of the  using layers relu1_1, relu2_1, relu3_1, relu4_1
 
 ## Setup
 
-1. Open Anaconda Prompt and navigate into project directory `cd path_to_repo`
-2. Run `conda env create` (while in project directory)
-3. Run `activate pytorch-nst`
+1. Install python 3.10 
+2. use requirements.txt to install all requirement libs
+3. set BOT_TOKEN as envirement variable 
+
+For GPU acceleration install 
 
 
 ## How to run 
@@ -51,7 +53,7 @@ users input and results images will be stored in the /data/ folder
 
 
 
-@misc{Gordić2020nst,
+{Gordić2020nst,
   author = {Gordić, Aleksa},
   title = {pytorch-neural-style-transfer},
   year = {2020},
