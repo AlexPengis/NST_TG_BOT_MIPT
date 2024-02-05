@@ -6,14 +6,13 @@ from aiogram.filters import  CommandStart
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
 from aiogram import F
+import neural_style_transfer as nst
 from aiogram.types import (
     KeyboardButton,
     ReplyKeyboardMarkup,
     ReplyKeyboardRemove,
 )
 
-
-import neural_style_transfer as nst
 class ClientState(StatesGroup):
     START_ = State()
     SEND_STYLE_IMG = State()
@@ -21,11 +20,9 @@ class ClientState(StatesGroup):
     PROCESS_IMAGE = State()
     RUN_GEN = State()
 
-
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 bot = Bot(token=BOT_TOKEN)
 dp = Dispatcher()
-
 
 async  def main():
     logging.basicConfig(level=logging.INFO)
@@ -60,7 +57,7 @@ async def handle_style_images(message: types.Message, state: FSMContext ):
         await state.set_state(ClientState.SEND_SOURCE_IMG)
     else:
         # If the message doesn't contain a photo, respond accordingly
-        await message.reply("Загрузите, пожалуйста, изображение.")
+        await message.reply("Загрузите, пожалуйста, изображение стиля как картинку а не в виде файла или документа мультимедии.")
 
 @dp.message(ClientState.SEND_SOURCE_IMG)
 async def handle_style_images(message: types.Message,  state: FSMContext):
@@ -97,7 +94,7 @@ async def handle_style_images(message: types.Message,  state: FSMContext):
 
      else:
          # If the message doesn't contain a photo, respond accordingly
-         await message.reply("Пожалуйста загрузите именно фотографию.")
+         await message.reply("Загрузите, пожалуйста, изображение как картинку а не в виде файла или документа мультимедии.")
 
 @dp.message(ClientState.PROCESS_IMAGE, F.text.casefold() == "начать заново")
 async def cancel_handler(message: types.Message, state: FSMContext) -> None:
@@ -117,8 +114,7 @@ async def run_generation(message: types.Message, state: FSMContext) -> None:
         reply_markup=ReplyKeyboardRemove(),
     )
 
-    optimization_config = nst.set_img_names(data['style_img_name'], data['source_img_name'] )
-    print(optimization_config)
+    optimization_config = nst.set_config(data['style_img_name'], data['source_img_name'] )
     nst.neural_style_transfer(optimization_config)
     out_img_path = f'data\\output-images\\' +  data['source_img_name'] +'_'+ data['style_img_name']  + '.jpg'
     print(out_img_path)

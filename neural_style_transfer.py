@@ -69,7 +69,7 @@ def neural_style_transfer(config):
             utils.save_and_maybe_display(optimizing_img, dump_path, config, cnt, num_of_iterations[config['optimizer']], should_display=False)
 
     return dump_path
-def set_img_names(style_img_name, source_img_name):
+def set_config(style_img_name, source_img_name):
     default_resource_dir = os.path.join(os.path.dirname(__file__), 'data')
     content_images_dir = os.path.join(default_resource_dir, 'content-images')
     style_images_dir = os.path.join(default_resource_dir, 'style-images')
