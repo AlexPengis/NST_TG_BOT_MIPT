@@ -6,7 +6,7 @@ based on Vgg19 CNN network as a final work fpr "Deep Learning (семестр 1,
 
 ### What is Neural Style Transfer  algorithm?
 The algorithm transfers style from one input image (the style image) onto another input image (the content image) using CNN nets (usually VGG-19) and gives a composite, stylized image out which keeps the content from the content image but takes the style from the style image.
-
+## Examples 
 <p align="center">
 <img src="readme_pics/style_example_1.png" width="720"/>
 <img src="readme_pics/style_example_2.png" width="720"/>
@@ -16,7 +16,7 @@ Vgg19 CNN model principal sheme:
 <p align="center">
 <img src="readme_pics/Vgg19.png" width="570"/>
 </p>
-## Examples
+
 
 Transfering style gives beautiful artistic results:
 
@@ -26,13 +26,9 @@ Transfering style gives beautiful artistic results:
 Starting with different initialization images: noise (white or gaussian), content and style leads to different results. <br/>
 Empirically content image gives the best results as explored in [this research paper](https://arxiv.org/pdf/1602.07188.pdf) also. <br/>
 Here you can see results for content, random and style initialization in that order (left to right):
-
-
-
 You can also see that with style initialization we had some content from the artwork leaking directly into our output.
 
 
-In steps 45, 129 and 510 of the  using layers relu1_1, relu2_1, relu3_1, relu4_1 and relu5_1 for style representation.
 
 ## Setup
 

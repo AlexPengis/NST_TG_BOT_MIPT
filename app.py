@@ -56,11 +56,11 @@ async def handle_style_images(message: types.Message, state: FSMContext ):
 
         # Respond to the user
         await state.update_data(style_img_name=file_id)
-        await message.reply("Изображение стиля загружено! Теперь, пожалуйста, загрузите одно изображение")
+        await message.reply("Изображение стиля загружено! Теперь, пожалуйста, загрузите изображение для обработки")
         await state.set_state(ClientState.SEND_SOURCE_IMG)
     else:
         # If the message doesn't contain a photo, respond accordingly
-        await message.reply("Загрузите пожалуйста изображение.")
+        await message.reply("Загрузите, пожалуйста, изображение.")
 
 @dp.message(ClientState.SEND_SOURCE_IMG)
 async def handle_style_images(message: types.Message,  state: FSMContext):
@@ -83,7 +83,7 @@ async def handle_style_images(message: types.Message,  state: FSMContext):
         await message.reply("Изображение  загружено!")
         await state.set_state(ClientState.PROCESS_IMAGE)
         await message.answer(
-            f"Нажмите кнопку Сгенерировать, что бы сгенерировать изображение. Генерация займет 20 секунд. ",
+            f"Нажмите кнопку \"Сгенерировать\", чтобы сгенерировать изображение. Генерация может занять несколько минут. ",
             reply_markup=ReplyKeyboardMarkup(
                 keyboard=[
                     [
