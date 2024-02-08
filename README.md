@@ -1,6 +1,6 @@
 ## Telegram bot with Neural Style Transfer (optimization method) 
 This repo contains a code of a simple Telegram chatbot based on aiogram library with PyTorch implementation of the original NST (Neural Style Transfer ) paper (:link: [Gatys et al.](https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Gatys_Image_Style_Transfer_CVPR_2016_paper.pdf)). 
-based on Vgg19 CNN network as a final work fpr "Deep Learning (семестр 1, осень 2023)" course. 
+based on Vgg19 CNN network as a final work for "Deep Learning (семестр 1, осень 2023)" course. 
 
 
 
@@ -18,7 +18,6 @@ Vgg19 CNN model principal sheme:
 </p>
 
 
-Transfering style gives beautiful artistic results:
 
 
 ### Optimization initialization
@@ -33,11 +32,8 @@ You can also see that with style initialization we had some content from the art
 ## Setup
 
 1. Install python 3.10 
-2. use requirements.txt to install all requirement libs
-3. set BOT_TOKEN as envirement variable 
-
-For GPU acceleration install 
-
+2. Use requirements.txt to install all requirement libs
+3. Set BOT_TOKEN as envirement variable 
 
 ## How to run 
 1. create a telegram chatbot using @botfather, generate bot token key
@@ -49,14 +45,7 @@ users input and results images will be stored in the /data/ folder
 
 
 
-{Gordić2020nst,
-  author = {Gordić, Aleksa},
-  title = {pytorch-neural-style-transfer},
-  year = {2020},
-  publisher = {GitHub},
-  journal = {GitHub repository},
-  howpublished = {\url{https://github.com/gordicaleksa/pytorch-neural-style-transfer}},
-}
+
 
 
 
